@@ -68,6 +68,7 @@ HMAC SHA256 signature
 - `quote asset` refers to the asset that is the `price` of a symbol.
 
 **ENUM definitions**
+
 Symbol:
 
 - BTCUSD
@@ -97,7 +98,7 @@ Order side (side):
 - SELL
 
 ## General endpoints
-**Check server time**
+###Check server time
 `GET /v1/time`
 
 Test connectivity to the Rest API and get the current server time.
@@ -105,7 +106,7 @@ Test connectivity to the Rest API and get the current server time.
 **Weight:** 1
 **Parameters:** NONE
 
-Response:
+**Response:**
 
     {
       "serverTime": 1499827319559
@@ -113,13 +114,13 @@ Response:
 
 
 
-Symbol price ticker
+###Symbol price ticker
     GET /v1/ticker/price
 
 Latest price for a symbol.
 
-Weight: 1
-Parameters:
+**Weight:** 1
+**Parameters:**
 
 | Name   | Type   | Mandatory | Description    |
 | ------ | ------ | --------- | -------------- |
@@ -128,25 +129,21 @@ Parameters:
 Response:
 
     {
+    
       "symbol": "BTCTWD",
       "price": "118692.40551000"
     }
 
 
 
-Account endpoints
-New buy order by currency (TRADE)
-    POST /v1/order  (HMAC SHA256)
+## Account endpoints
 
-Send in a new buy order by currency amount
-
-
-New order (TRADE)
+###New order (TRADE)
     POST /v1/order  (HMAC SHA256)
 
 Send in a new order.
 
-Parameters:
+**Parameters:**
 
 | Name           | Type    | Mandatory | Description                          |
 | -------------- | ------- | --------- | ------------------------------------ |
@@ -157,7 +154,7 @@ Parameters:
 | amount         | DECIMAL | NO        | Buy or sell in term of fiat currency |
 | wallet_address | LONG    | YES       | Beneficiary wallet address           |
 
-Response ACK
+**Response ACK**
 
     {
         "order_id": 37
@@ -173,19 +170,20 @@ Response ACK
     }
 
 
-Confirm Order endpoints
+###Confirm Order endpoints
     POST /v1/confirmOrder
 
 Confirm an order
 
-Weight: 1
+**Weight:** 1
+**Parameters:**
 
 | Name    | Type   | Mandatory | Description |
 | ------- | ------ | --------- | ----------- |
 | orderID | Int    | YES       |             |
 | symbol  | String | YES       |             |
 
-Response:
+**Response:**
 
     {
       "status": true,
@@ -194,20 +192,19 @@ Response:
 
 
 
-Query order (USER_DATA)
+###Query order (USER_DATA)
     GET /v1/order  (HMAC SHA256)
 
 Check an order’s status.
 
-Weight: 1
-
-Parameters:
+**Weight:** 1
+**Parameters:**
 
 | Name    | Type | Mandatory | Description |
 | ------- | ---- | --------- | ----------- |
 | orderID | Int  | YES       |             |
 
-Response:
+**Response:**
 
     {
       "orderId": "27",
@@ -223,21 +220,20 @@ Response:
 
 
 
-Cancel order (TRADE)
+### Cancel order (TRADE)
     DELETE /v1/order  (HMAC SHA256)
 
 Cancel an active order.
 
-Weight: 1
-
-Parameters:
+**Weight:** 1
+**Parameters:**
 
 | Name    | Type   | Mandatory | Description |
 | ------- | ------ | --------- | ----------- |
 | symbol  | STRING | YES       |             |
 | orderID | INT    | YES       |             |
 
-Response:
+**Response:**
 
     {
       "status": "success",
@@ -246,14 +242,14 @@ Response:
 
 
 
-Current open orders (USER_DATA)
+###Current open orders (USER_DATA)
     GET /v1/openOrders  (HMAC SHA256)
 
 Get all open orders on a symbol. Careful when accessing this with no symbol.
 
-Weight: 1 for a single symbol; 40 when the symbol parameter is omitted
+**Weight:** 1 for a single symbol; 40 when the symbol parameter is omitted
 
-Parameters:
+**Parameters:**
 
 | Name   | Type   | Madatory | Description |
 | ------ | ------ | -------- | ----------- |
@@ -262,7 +258,7 @@ Parameters:
 - If the symbol is not sent, orders for all symbols will be returned in an array
 - When all symbols are returned, the number of requests counted against the rate limiter is equal to the number of symbols currently trading on the exchange.
 
-Response:
+**Response:**
 
     [
       {
