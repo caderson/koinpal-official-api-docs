@@ -60,14 +60,14 @@ HMAC SHA256 signature
 
 
 
-Public API Endpoints
+## Public API Endpoints
 
-Terminology
+**Terminology**
 
 - `base asset` refers to the asset that is the quantity of a symbol.
 - `quote asset` refers to the asset that is the `price` of a symbol.
 
-ENUM definitions
+**ENUM definitions**
 Symbol:
 
 - BTCUSD
@@ -95,14 +95,15 @@ Order side (side):
 
 - BUY
 - SELL
-General endpoints
-Check server time
-     GET /v1/time
+
+## General endpoints
+**Check server time**
+`GET /v1/time`
 
 Test connectivity to the Rest API and get the current server time.
 
-Weight: 1
-Parameters: NONE
+**Weight:** 1
+**Parameters:** NONE
 
 Response:
 
