@@ -1,4 +1,4 @@
-# KoinPal API - 2019-03-22
+# Offical Documentation for the KoinPal API - 2019-03-22
 ## General Information
 
 - The base endpoint is: `https://ex.koinpal.com/api/`
